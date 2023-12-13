@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+
+
+{% block css %}
+.anime-box{
+  border-radius:3px;
+  -webkit-border-radius:3px;
+  -webkit-box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+  -khtml-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  -ms-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  -o-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+  background: rgba(255,255,255,.05);
+  overflow:hidden;
+}
+.box-top{
+  background:#a11421;
+  font-size: 18px;
+  font-weight:500;
+}
+.movie-flex{
+  margin-top:10px;
+}
+.movie-box{
+  width:10rem;
+  height:13.7rem;
+  border: solid #333;
+  border-radius: 5px;
+  margin-right:6px;
+  margin-left:6px;
+  margin-bottom: 15px;
+  overflow:hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  transition: 0.5s ease;
+  -webkit-box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
+  box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
+}
+.movie-box:hover{
+  border-color: #e61d2f;
+  background-size: 120% 130%;
+}
+.movie-text{
+  height: 90%;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+.movie-box:hover .movie-text{
+  color:#e61d2f;
+}
+.sidebox-text{
+  font-size: 18px;
+}
+.sidebox-anime{
+  padding: 10px 5px 0px 5px;
+}
+.sidebox-movie{
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  background:#1c1f22;
+  border-radius: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  transition: 0.5s ease;
+}
+.sidebox-image{
+  max-width: 65px;
+  padding:0;
+  border-radius: 38.5px;
+  overflow:hidden;
+}
+.sidebox-movie img{
+  width: 65px;
+  height: 65px;
+}
+.sidebox-text i{
+  transition: 0.5s ease;
+}
+.sidebox-movie:hover .sidebox-text i{
+  color:#e61d2f;
+}
+.sidebox-movie:hover{
+  background:#333538;
+}
+.season{
+  color:rgba(255,255,255,.8);
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+.season:hover{
+  color: #e61d2f;
+}
+.ep-sub{
+  font-size: 10px;
+  color:rgba(255,255,255,.8);
+  padding-left: 5px;
+  padding-right:5px;
+  border-radius: 7px;
+  background: #222;
+}
+.activepage{
+  color: #e61d2f;
+}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 col-lg-9 px-4">
+    <div class="row anime-box mb-3">
+      <div class="col-12 box-top py-1">
+        Anime Movies
+      </div>
+      <!--Alphabet-->
+      <div class="col mx-2 mt-2 sidebox-movie">
+        <div class="row">
+          <div class="col-12 d-flex flex-wrap justify-content-center">
+            {% for p in aphs %}
+              <div class="">
+                <a class="link {% if activeaph == p.aph %}activepage{% endif %}" href="{% if p.link == '' %}{% url 'movies' %}{%else%}{{p.link}}{%endif%}">
+                  <span class="unselectable px-2" style="font-size:14px;">{{p.aph}}</span>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!--MOVIES-->
+      <div class="col-12 box-content px-0 px-lg-4">
+        <div class="d-flex flex-wrap justify-content-around movie-flex py-1">
+          {% for anime in lrel %}
+            <a href="{{anime.link}}">
+              <div class="movie-box" style="background-image:linear-gradient(0deg, rgba(0,0,0,0.8769257703081232) 0%, rgba(13,13,22,0.7536764705882353) 26%, rgba(33,33,33,0) 74%), url('{{anime.image}}');">
+                <div class="d-flex px-1 mt-1">
+                  <div class="ep-sub mr-auto">
+                    {{anime.episode}}
+                  </div>
+                  <div class="ep-sub ml-auto" style="background:#b81726">
+                    {% if anime.sub == "Dub" %}{{anime.sub}}{% else %}Sub{% endif %}
+                  </div>
+                </div>
+                <div class="d-flex movie-text px-1 m-0 justify-content-center align-items-end">
+                  <div class="text-center">
+                    {{anime.name}}
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% if activepage != "null" %}
+      <div class="col mx-2 sidebox-movie">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center mb-1">
+            <span style="font-size:16px; color:#e61d2f; font-weight:500;">
+              Pages
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center">
+            {% for p in pages %}
+              <div class="">
+                <a class="link {% if activepage == p.number %}activepage{% endif %}" href="{{p.link}}">
+                  <span class="unselectable pagesnav" style="font-size:20px;">{{p.number}}</span>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-3 px-4">
+    <div class="row mb-3 anime-box">
+      <div class="sidebox-text px-2 py-1 mb-0">
+        Recent Release
+      </div>
+      <div class="col-12 mt-0 pt-0" style="background:#333; height:3px;">
+      </div>
+      <div class="col-12 sidebox-anime popular">
+        {% for anime in popog %}
+          <a href="{{anime.link}}">
+            <div class="row sidebox-movie py-1">
+              <div class="col sidebox-image">
+                <img src="{{anime.image}}" alt="">
+              </div>
+              <div class="col d-flex sidebox-text text-eclipse align-items-center" style="font-size:12px; color:rgba(255,255,255,.8); max-width:400px;">
+                <div class="">
+                  <i>{{anime.name}}</i>
+                  <br>
+                  <span style="font-size:9px; opacity:0.8;">
+                    {{anime.episode}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row mb-3 anime-box">
+      <div class="sidebox-text px-2 py-1 mb-0">
+        Season
+      </div>
+      <div class="col-12 mt-0 pt-0" style="background:#333; height:3px;">
+      </div>
+      <div class="col-12 sidebox-anime">
+        <div class="row sidebox-movie py-1">
+          <div class="col-12 p-0 m-0" style="color:#e61d2f;">
+            {% for s in season %}
+              <i>{{s.year}}</i>
+              {% for a in s.links %}
+                <a class="season" href="{{a.0}}">{{a.1}}</a>
+              {% endfor %}
+              <br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

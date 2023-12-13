@@ -1,0 +1,546 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="{{metadescription}}">
+    <meta name="google-site-verification" content="CL4mAt62I0zi482TKT_iyZCgKWDkskPsZLzHcGrkgRY" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>OWOAnime | {{pagetitle}}</title>
+    <link rel="icon" href="{% static 'oa.png' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text&family=Sansita+Swashed&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2406565232259442"
+     crossorigin="anonymous"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4L3PLYDTFG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4L3PLYDTFG');
+    </script>
+    {% block head %}
+    {% endblock %}
+    <style>
+      ::-webkit-scrollbar {
+        width: 10px;
+        opacity: 0.5;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        opacity: 0;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: #555;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #888;
+      }
+      body{
+        font-family: 'Cabin', sans-serif;
+        font-size: 14px;
+        background-color: #1c1f22;
+        color: rgba(255,255,255,.8);
+      }
+      a{
+        text-decoration: none!important;
+      }
+      .unselectable {
+        white-space: pre-wrap;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .link{
+        color: rgba(255,255,255,.8);
+        transition: 0.5s;
+      }
+      .link:hover{
+        color:#e61d2f;
+      }
+      .text-eclipse{
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        max-width:0;
+      }
+      .searchx {
+          width: 280px;
+          overflow: hidden;
+      }
+      .fa-fw {
+        text-align: center;
+        width: 1.25em;
+      }
+      svg {
+        fill: rgba(255,255,255,.8);
+        transition: 0.2s ease;
+      }
+      .svg-inline--fa{
+        display: inline-block;
+        font-size: inherit;
+        height: 1em;
+        vertical-align: -.125em;
+        box-sizing: border-box;
+      }
+      .form-inline {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+      }
+      .nav-search {
+          border-radius: .3125rem;
+          padding: .5rem .8rem;
+          color: #e61d2f;
+          background: #111;
+          border: unset;
+          border-right: 1px solid #e61d2f;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          transition: all 60ms;
+          transition-property: background;
+          font-weight: 400;
+          display: block;
+          margin: 0;
+      }
+      input {
+        width: 80%;
+        -webkit-writing-mode: horizontal-tb !important;
+        text-rendering: auto;
+        color: -internal-light-dark(black, white);
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: start;
+        appearance: auto;
+        background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+        -webkit-rtl-ordering: logical;
+        cursor: text;
+        margin: 0em;
+        font: 400 13.3333px Arial;
+        padding: 1px 2px;
+        border-width: 2px;
+        border-style: inset;
+        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+        border-image: initial;
+        border:unset;
+      }
+      input:focus, textarea:focus, select:focus{
+        outline: none;
+      }
+      .search-button {
+        font-size: 15px;
+        color: #77838d;
+        background: #111;
+        border: unset;
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        transition: all 60ms;
+        transition-property: color,background,border-color,outline;
+        padding-right: .5rem;
+        padding-left: .5rem;
+        display: block;
+        padding: .47rem .4rem;
+        cursor: pointer;
+      }
+      .search-button:hover svg{
+        fill:#e61d2f;
+      }
+      #side-menu{
+        -webkit-box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
+        box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
+        position:fixed;
+        z-index:2;
+        width:300px;
+        height:100vh;
+        background:#1c1f22;
+        top:0;
+        left:-300px;
+        transition: 0.2s;
+      }
+      #side-menu.active{
+        left: 0px;
+      }
+      .activetab{
+        color: #e61d2f;
+      }
+      .pagesnav{
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .down-arrow label{
+        cursor: pointer;
+      }
+      .down-arrow svg{
+        transition: 0.5s;
+      }
+      .down-arrow:hover svg{
+        fill: #e61d2f;
+      }
+      .down-arrow ul{
+        border-radius: 5px;
+        z-index: 2;
+        padding: 0;
+        width: 200px;
+        list-style: none;
+        left: 0;
+        top: -350px;
+        position: absolute;
+        background: #27282b;
+        box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
+        display: block;
+        transition: 0.4s;
+      }
+      .down-arrow li{
+        margin: 5px;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background: #1c1f22;
+      }
+      .down-arrow li:hover{
+        background: #333538;
+      }
+      .down-arrow{
+        position: relative;
+      }
+      #arrowbutton{
+        display: none;
+      }
+      [id^=arrowbutton]:checked + .dropmenu-list{
+        top: 49px;
+      }
+      {% block css %}
+      {% endblock %}
+      @media only screen and (max-width: 1261px) {
+        .movie-box {
+          width: 10rem;
+          height: 13.7rem;
+        }
+        .movie-text{
+
+        }
+      }
+      @media only screen and (max-width: 1178px) {
+        .movie-box {
+          width: 8rem;
+          height: 10.9rem;
+        }
+        .nav{
+          width: 600px;
+        }
+      }
+      @media only screen and (max-width: 1060px) {
+        .nav{
+          width: 700px;
+        }
+      }
+      @media only screen and (max-width: 1020px) {
+        .nav{
+          width: 780px;
+        }
+      }
+      @media only screen and (max-width: 992px) {
+        .movie-box {
+          width: 10rem;
+          height: 13.7rem;
+        }
+        .movie-text{
+
+        }
+      }
+      @media only screen and (max-width: 700px) {
+        .movie-box {
+          width: 8rem;
+          height: 10.9rem;
+        }
+        .movie-text{
+
+        }
+        .bigimage{
+          width:30%;
+        }
+      }
+      @media only screen and (max-width: 590px) {
+        .movie-box {
+          width: 6rem;
+          height: 8.25rem;
+        }
+        .movie-text{
+          height: 85%;
+          font-size: 10px;
+        }
+        .bigimage{
+          width:40%;
+        }
+        .box-content h4{
+          font-size: 20px;
+        }
+      }
+      @media only screen and (max-width: 460px) {
+        .movie-box {
+          width: 10rem;
+          height: 13.7rem;
+        }
+        .movie-text{
+          height: 90%;
+          font-size: 14px;
+        }
+        .box-content h4{
+          font-size: 20px;
+        }
+        .player{
+          padding-top: 70%;
+        }
+      }
+      @media only screen and (max-width: 380px) {
+        .movie-box {
+          width: 9rem;
+          height: 12.3rem;
+        }
+        .movie-text{
+
+        }
+      }
+      @media only screen and (max-width: 360px) {
+        .movie-box {
+          width: 8rem;
+          height: 10.9rem;
+        }
+        .movie-text{
+          height: 88%;
+          font-size: 12px;
+        }
+        .box-content h4{
+          font-size: 17px;
+        }
+      }
+
+      @media only screen and (max-width: 320px) {
+        .movie-box {
+          width: 6rem;
+          height: 8.2rem;
+        }
+        .movie-text{
+          height: 85%;
+          font-size: 10px;
+        }
+      }
+      {% block media %}
+      {% endblock %}
+    </style>
+  </head>
+  <body>
+    <!-- jumbotron -->
+    <div class="container-fluid px-3 px-lg-5" style="background:#1c1f22;">
+      <!-- Site Logo -->
+      <div class="d-flex flex-row align-items-center" style="height:70px;">
+        <div class="site-logo">
+          <h1 class="font-weight-heavy">
+            <a href="{% url 'home' %}" class = "link">
+              <span class="activetab">OWO</span>Anime
+            </a>
+          </h1>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-none d-lg-flex flex-row nav ml-3 align-items-center">
+          <div class="">
+            <a href="{% url 'home' %}" class="nav-link link {% if activetab == "home" %}activetab{% endif %}">HOME</a>
+          </div>
+          <div class="">
+            <a href="{% url 'animelist' %}" class="nav-link link {% if activetab == "anime" %}activetab{% endif %}">ANIME</a>
+          </div>
+          <div class="">
+            <a href="{% url 'movies' %}" class="nav-link link {% if activetab == "movies" %}activetab{% endif %}">MOVIES</a>
+          </div>
+          <div class="">
+            <a href="{% url 'newseason' %}" class="nav-link link {% if activetab == "newseason" %}activetab{% endif %}">NEW SEASON</a>
+          </div>
+          <div class="">
+            <a href="{% url 'popular' %}" class="nav-link link {% if activetab == "popular" %}activetab{% endif %}">POPULAR</a>
+          </div>
+          <div class="down-arrow">
+            <label for="arrowbutton" class="nav-link mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+              </svg>
+            </label>
+            <input type="checkbox" id="arrowbutton" value="">
+            <ul class="dropmenu-list">
+              <a class="link" href="https://owoanime.com/category/boruto-naruto-next-generations/"><li>Boruto Next Generation</li></a>
+              <a class="link" href="https://owoanime.com/category/naruto/"><li>Naruto</li></a>
+              <a class="link" href="https://owoanime.com/category/naruto-shippuden/"><li>Naruto Shippuden</li></a>
+              <a class="link" href="https://owoanime.com/category/hunter-x-hunter/"><li>Hunter X Hunter</li></a>
+              <a class="link" href="https://owoanime.com/category/kimetsu-no-yaiba/"><li>Demon Slayer</li></a>
+              <a class="link" href="https://owoanime.com/category/tokyo-revengers/"><li>Tokyo Revengers</li></a>
+              <a class="link" href="https://owoanime.com/category/one-piece/"><li>One Piece</li></a>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Search -->
+        <div class="d-none d-lg-block ml-auto searchx">
+          <form class="form-inline" method="get" action="/search" style="justify-content: center;">
+            <input class="nav-search" type="text" aria-label="Search text" placeholder="Search..." id="keyword" name="keyword" required="">
+            <button class="search-button pt-1" type="submit" aria-label="Submit search query" style="height:32px;">
+              <svg class="svg-inline--fa fa-fw " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="font-size:13px;">
+                <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Side Menu -->
+        <div class="d-lg-none ml-auto" onclick="show()">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 512 512; width:40px;" xml:space="preserve" class="">
+          		<path d="M12.03,120.303h360.909c6.641,0,12.03-5.39,12.03-12.03c0-6.641-5.39-12.03-12.03-12.03H12.03    c-6.641,0-12.03,5.39-12.03,12.03C0,114.913,5.39,120.303,12.03,120.303z" fill="#ffffff" data-original="#000000" style="" class=""></path>
+          		<path d="M372.939,180.455H12.03c-6.641,0-12.03,5.39-12.03,12.03s5.39,12.03,12.03,12.03h360.909c6.641,0,12.03-5.39,12.03-12.03    S379.58,180.455,372.939,180.455z" fill="#ffffff" data-original="#000000" style="" class=""></path>
+          		<path d="M372.939,264.667H132.333c-6.641,0-12.03,5.39-12.03,12.03c0,6.641,5.39,12.03,12.03,12.03h240.606    c6.641,0,12.03-5.39,12.03-12.03C384.97,270.056,379.58,264.667,372.939,264.667z" fill="#ffffff" data-original="#000000" style="" class=""></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div id="side-menu">
+      <div class="d-flex mt-5 justify-content-around align-items-center">
+        <div class="">
+          MENU
+        </div>
+        <div class="text-danger" onclick="show()" style="font-size:20px;">
+          <button class="btn btn-danger">X</button>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          <div class="d-flex flex-column align-items-center">
+            <div class="">
+              <a href="{% url 'home' %}" class="link {% if activetab == "home" %}activetab{% endif %}">
+                <div class="py-2">
+                  HOME
+                </div>
+              </a>
+            </div>
+            <div class="">
+              <a href="{% url 'animelist' %}" class="link {% if activetab == "anime" %}activetab{% endif %}">
+                <div class="py-2">
+                  ANIME
+                </div>
+              </a>
+            </div>
+            <div class="">
+              <a href="{% url 'movies' %}" class="link {% if activetab == "movies" %}activetab{% endif %}">
+                <div class="py-2">
+                  MOVIES
+                </div>
+              </a>
+            </div>
+            <div class="">
+              <a href="{% url 'newseason' %}" class="link {% if activetab == "newseason" %}activetab{% endif %}">
+                <div class="py-2">
+                  NEW SEASON
+                </div>
+              </a>
+            </div>
+            <div class="">
+              <a href="{% url 'popular' %}" class="link {% if activetab == "popular" %}activetab{% endif %}">
+                <div class="py-2">
+                  POPULAR
+                </div>
+              </a>
+            </div>
+            <div class="mt-3">
+              <div class="searchx">
+                <form class="form-inline" method="get" action="/search" style="justify-content: center;">
+                  <input class="nav-search" type="text" aria-label="Search text" placeholder="Search..." id="keyword" name="keyword" required="">
+                  <button class="search-button pt-1" type="submit" aria-label="Submit search query" style="height:32px;">
+                    <svg class="svg-inline--fa fa-fw " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="font-size:13px;">
+                      <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Login Register -->
+    <div class="text-center m-0 login" style = "background:rgba(255,255,255,.05); font-weight:500; padding: 5px;">
+      <i><a class="link" href="#" style="text-decoration: none;">Login</a><span class="unselectable">  |  </span><a class="link" href="#" style="text-decoration: none;">Register</a></i>
+    </div>
+
+    <!-- Container -->
+    <div class="container-fluid px-3 px-lg-5 pt-3" style="background-color:#1c1f22;">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+
+    <!-- Footer -->
+    <footer style="border-top:2px solid #292929;" class="container-fluid py-2 px-1 mt-0">
+      <div class="row mx-3 my-2">
+        <div class="col-12 col-lg-6 text-center text-lg-left px-4 pb-3 pt-lg-3">
+          <div class="site-logo">
+            <h1 class="font-weight-heavy mb-1">
+              <a href="{% url 'home' %}" class = "link"><span class="activetab">OWO</span>Anime</a>
+            </h1>
+            Copyright © owoanime.com. All Rights Reserved<br>
+            <div class="small mt-2" style="opacity:0.8">
+              Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="d-flex flex-column rounded px-4 py-3" style="border:2px solid; border-color: #333;">
+            <div class="mb-2">
+              <span class="activetab" style="font-size:14px;">LINKS</span>
+            </div>
+            <div class="mb-2 p-0" style="border-left:1px dotted;font-size:13px;">
+              <a href="{% url 'dmca' %}" class="link"><span class="unselectable">  DMCA</span></a>
+            </div>
+            <div class="mb-2 p-0" style="border-left:1px dotted;font-size:13px;">
+              <a href="{% url 'contact' %}" class="link"><span class="unselectable">  Contact Us</span></a>
+            </div>
+            <div class="mb-2 p-0" style="border-left:1px dotted;font-size:13px;">
+              <a href="{% url 'about' %}" class="link"><span class="unselectable">  About Us</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    {% block body %}
+      {% endblock %}
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script>
+      function show() {
+        document.getElementById('side-menu').classList.toggle('active');
+      }
+
+      {% block scripts %}
+      {% endblock %}
+    </script>
+  </body>
+</html>

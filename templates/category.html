@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+
+{% block css %}
+.anime-box{
+  border-radius:3px;
+  -webkit-border-radius:3px;
+  -webkit-box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+  -khtml-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  -ms-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  -o-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+  background: rgba(255,255,255,.05);
+  overflow:hidden;
+}
+.box-top{
+  background:#a11421;
+  font-size: 18px;
+  font-weight:500;
+}
+.movie-flex{
+  margin-top:10px;
+}
+.movie-box{
+  width:10rem;
+  height:13.7rem;
+  border: solid #333;
+  border-radius: 5px;
+  margin-right:6px;
+  margin-left:6px;
+  margin-bottom: 15px;
+  overflow:hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  transition: 0.5s ease;
+  -webkit-box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
+  box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
+}
+.movie-box:hover{
+  border-color: #e61d2f;
+  background-size: 120% 130%;
+}
+.movie-text{
+  height: 90%;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+.movie-box:hover .movie-text{
+  color:#e61d2f;
+}
+.sidebox-text{
+  font-size: 18px;
+}
+.sidebox-anime{
+  padding: 10px 5px 0px 5px;
+}
+.sidebox-movie{
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  background:#1c1f22;
+  border-radius: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  transition: 0.5s ease;
+}
+.sidebox-image{
+  max-width: 65px;
+  padding:0;
+  border-radius: 38.5px;
+  overflow:hidden;
+}
+.sidebox-movie img{
+  width: 65px;
+  height: 65px;
+}
+.sidebox-text i{
+  transition: 0.5s ease;
+}
+.sidebox-movie:hover .sidebox-text i{
+  color:#e61d2f;
+}
+.sidebox-movie:hover{
+  background:#333538;
+}
+.season{
+  color:rgba(255,255,255,.8);
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+.season:hover{
+  color: #e61d2f;
+}
+.ep-sub{
+  font-size: 10px;
+  color:rgba(255,255,255,.8);
+  padding-left: 5px;
+  padding-right:5px;
+  border-radius: 7px;
+  background: #222;
+}
+.activepage{
+  color: #e61d2f;
+}
+.bigimage{
+  width: 250px;
+  float: left;
+  border-radius: 5px;
+}
+.box-content p span{
+  color: #e61d2f;
+}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 col-lg-9 px-4">
+    <div class="row anime-box mb-3">
+      <div class="col-12 box-top py-1">
+        Anime Info
+      </div>
+      <div class="col-12 box-content px-0 px-lg-3 my-2">
+        <img class="bigimage mx-3" src="{{animeinfo.image}}" alt="">
+        <h4 class="mx-3">{{animeinfo.title}}</h4>
+        <p class="mx-3 mb-1">
+          <span class="unselectable">{{animeinfo.type.0}}</span>
+          <i><a href="{{animeinfo.type.1}}" class="link">{{animeinfo.type.2}}</a></i>
+        </p>
+        <p class="mx-3 mb-1">
+          <span class="unselectable">{{animeinfo.summary.0}}</span>
+          <i>{{animeinfo.summary.1}}</i>
+        </p>
+        <p class="mx-3 mb-1">
+          <span class="unselectable">Genre: </span>
+          <i>
+            {% for g in animeinfo.genre %}
+              <a class="link" href="{{g.link}}">{{g.name}}</a>
+            {% endfor %}
+          </i>
+        </p>
+        <p class="mx-3 mb-1">
+          <span class="unselectable">{{animeinfo.released.0}}</span>
+          <i>{{animeinfo.released.1}}</i>
+        </p>
+        <p class="mx-3 mb-1">
+          <span class="unselectable">{{animeinfo.status.0}}</span>
+          <i>{{animeinfo.status.1}}</i>
+        </p>
+        <p class="mx-3 mb-1">
+          <span class="unselectable">{{animeinfo.othername.0}}</span>
+          <i>{{animeinfo.othername.1}}</i>
+        </p>
+      </div>
+      {% if animeinfo.status.1 != "Upcoming" %}
+      <div class="row mx-2 justify-content-center" style="margin-bottom: 10px;padding: 10px 10px;background:#1c1f22;border-radius: 5px; width:100%;">
+        <div class="row">
+          <div class="col-12 d-flex flex-wrap justify-content-center">
+            {% for e in ep %}
+            <div class="">
+              <a href="?ep={{e}}" class="link {% if e == activeep %}activepage{%endif%}">
+                <span class="unselectable" style="font-size:14px; font-weight:500;">  {{e}}  </span>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="row mx-2" style="margin-bottom: 10px;padding: 10px 10px;background:#1c1f22;border-radius: 5px;width:100%;">
+        <div class="row">
+          <div class="col-12 d-flex flex-wrap justify-content-center">
+            {% for p in episode %}
+              <div class="mx-1 my-1">
+                <a class="" href="{{p.0}}">
+                  <span class="unselectable btn btn-dark" style="font-size:12px;">{{p.1}} <span style="font-size:8px;">{{p.2}}</span></span>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-3 px-4">
+    <!--<div class="row mb-3 anime-box">
+      <div class="sidebox-text px-2 py-1 mb-0">
+        Advertisement
+      </div>
+      <div class="col-12 mt-0 pt-0" style="background:#333; height:3px;">
+      </div>
+      <div class="col-12 d-flex sidebox-anime popular justify-content-center">
+        <div class="">
+          <script type="text/javascript">
+          	atOptions = {
+          		'key' : 'c0a6d2ae6d4826b06cc1a0a92b565d23',
+          		'format' : 'iframe',
+          		'height' : 250,
+          		'width' : 300,
+          		'params' : {}
+          	};
+          	document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.creativeformatsnetwork.com/c0a6d2ae6d4826b06cc1a0a92b565d23/invoke.js"></scr' + 'ipt>');
+          </script>
+        </div>
+      </div>
+    </div>-->
+    <div class="row mb-3 anime-box">
+      <div class="sidebox-text px-2 py-1 mb-0">
+        Recent Release
+      </div>
+      <div class="col-12 mt-0 pt-0" style="background:#333; height:3px;">
+      </div>
+      <div class="col-12 sidebox-anime popular">
+        {% for anime in popog %}
+          <a href="{{anime.link}}">
+            <div class="row sidebox-movie py-1">
+              <div class="col sidebox-image">
+                <img src="{{anime.image}}" alt="">
+              </div>
+              <div class="col d-flex sidebox-text text-eclipse align-items-center" style="font-size:12px; color:rgba(255,255,255,.8); max-width:400px;">
+                <div class="">
+                  <i>{{anime.name}}</i>
+                  <br>
+                  <span style="font-size:9px; opacity:0.8;">
+                    {{anime.episode}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row mb-3 anime-box">
+      <div class="sidebox-text px-2 py-1 mb-0">
+        Season
+      </div>
+      <div class="col-12 mt-0 pt-0" style="background:#333; height:3px;">
+      </div>
+      <div class="col-12 sidebox-anime">
+        <div class="row sidebox-movie py-1">
+          <div class="col-12 p-0 m-0" style="color:#e61d2f;">
+            {% for s in season %}
+              <i>{{s.year}}</i>
+              {% for a in s.links %}
+                <a class="season" href="{{a.0}}">{{a.1}}</a>
+              {% endfor %}
+              <br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

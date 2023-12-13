@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+
+{% block css %}
+.anime-box{
+  border-radius:3px;
+  -webkit-border-radius:3px;
+  -webkit-box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+  -khtml-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  -ms-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  -o-box-shadow: 0 2px 3px rgba(0,0,0,.1);
+  box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+  background: rgba(255,255,255,.05);
+  overflow:hidden;
+}
+.box-top{
+  background:#a11421;
+  font-size: 18px;
+  font-weight:500;
+}
+.movie-flex{
+  margin-top:10px;
+}
+.movie-box{
+  width:10rem;
+  height:13.7rem;
+  border: solid #333;
+  border-radius: 5px;
+  margin-right:6px;
+  margin-left:6px;
+  margin-bottom: 15px;
+  overflow:hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  transition: 0.5s ease;
+  -webkit-box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
+  box-shadow: 0 5px 20px rgb(0 0 0 / 50%);
+}
+.movie-box:hover{
+  border-color: #e61d2f;
+  background-size: 120% 130%;
+}
+.movie-text{
+  height: 90%;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+.movie-box:hover .movie-text{
+  color:#e61d2f;
+}
+.sidebox-text{
+  font-size: 18px;
+}
+.sidebox-anime{
+  padding: 10px 5px 0px 5px;
+}
+.sidebox-movie{
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  background:#1c1f22;
+  border-radius: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  transition: 0.5s ease;
+}
+.sidebox-image{
+  max-width: 65px;
+  padding:0;
+  border-radius: 38.5px;
+  overflow:hidden;
+}
+.sidebox-movie img{
+  width: 65px;
+  height: 65px;
+}
+.sidebox-text i{
+  transition: 0.5s ease;
+}
+.sidebox-movie:hover .sidebox-text i{
+  color:#e61d2f;
+}
+.sidebox-movie:hover{
+  background:#333538;
+}
+.season{
+  color:rgba(255,255,255,.8);
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+.season:hover{
+  color: #e61d2f;
+}
+.ep-sub{
+  font-size: 10px;
+  color:rgba(255,255,255,.8);
+  padding-left: 5px;
+  padding-right:5px;
+  border-radius: 7px;
+  background: #222;
+}
+.activepage{
+  color: #e61d2f;
+}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 col-lg-9 px-4">
+    <div class="row anime-box mb-3">
+      <div class="col-12 box-top py-1">
+        DMCA
+      </div>
+      <div class="col-12 box-content px-0 px-lg-3">
+        <div class="px-3 px-lg-0 movie-flex py-1">
+          <h5>Legal Disclaimer</h5>
+          <p>The author is not responsible for any contents linked or referred to from his pages – If any damage occurs by the use of information presented there, only the author of the respective pages might be liable, not the one who has linked to these pages. <span class="activetab">OWOAnime doesn’t host any content</span> </p>
+          <p>
+            All OWOAnime does is link or embed content that was uploaded to popular Online Video hosting sites like Veoh.com / Megavideo.com / Youtube.com / Google Video. All youtube/veoh/megavideo/googlevideo users signed a contract with the sites when they set up their accounts which forces them not to upload illegal content. By clicking on any Links to videos while surfing on OWOAnime you watch content hosted on third parties and OWOAnime cant take the responsibility for any content hosted on other sites.
+          </p>
+          <p>
+            We do not upload any videos nor do we know who and where videos are coming from. We do not promote any illegal conduct of any kind. Links to the videos are submitted by users and managed by users.
+          </p>
+          <h6>
+            <i>DMCA Notice of Copyright Infringement</i>
+          </h6>
+          <h6>
+            <i>OWOAnime is an online service provider as defined in the Digital Millennium Copyright Act.</i>
+          </h6>
+          <p>
+            We provide legal copyright owners with the ability to self-publish on the Internet by uploading, storing and displaying various types of media. We do not actively monitor, screen or otherwise review the media which is uploaded to our servers by users of the service.<br>
+            <i>We take copyright violation very seriously and will vigorously protect the rights of legal copyright owners.</i><br>
+            If you are the copyright owner of content which appears on the OWOAnime website and you did not authorize the use of the content you must notify us in writing in order for us to identify the allegedly infringing content and take action.
+          </p>
+          <p>
+            <span class="activetab">We will be unable to take any action if you do not provide us with the required information</span>, so please fill out all fields accurately and completely. You may make a written notice via e-mail, facsimile or postal mail to our contact email as listed below. Your written notice must include the following:
+          </p>
+          <ul>
+            <li>
+              <i>Provide evidence of the authorized person to act on behalf of the owner of an exclusive right that is allegedly infringed.</i>
+            </li>
+            <li>
+              <i>Specific identification of the copyrighted work which you are alleging to have been infringed. If you are alleging infringement of multiple copyrighted works with a single notification you must submit a representative list which specifically identifies each of the works that you allege are being infringed.</i>
+            </li>
+            <li>
+              <i>Specific identification of the location and description of the material that is claimed to be infringing or to be the subject of infringing activity with enough detailed information to permit us to locate the material. You should include the specific URL or URLs of the web pages where the allegedly infringing material is located.</i>
+            </li>
+            <li>
+              <i>Information reasonably sufficient to allow us to contact the complaining party which may include a name, address, telephone number and electronic mail address and signature at which the complaining party may be contacted.</i>
+            </li>
+            <li>
+              <i>A statement that the complaining party has a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent or the law.</i>
+            </li>
+            <li>
+              <i>A statement that the information in the notification is accurate, and under penalty of perjury that the complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.</i>
+            </li>
+          </ul>
+          <p>Please send the infringement notice via email to <span class="activetab">contact@owoanime.com</span></p>
+          <p>Please allow us a day or two for an email response. Note that emailing your complaint to other parties such as our Internet Service Provider will not expedite your request and may result in a delayed response due the complaint not properly being filed. Thanks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-3 px-4">
+    <div class="row mb-3 anime-box">
+      <div class="sidebox-text px-2 py-1 mb-0">
+        Recent Release
+      </div>
+      <div class="col-12 mt-0 pt-0" style="background:#333; height:3px;">
+      </div>
+      <div class="col-12 sidebox-anime popular">
+        {% for anime in popog %}
+          <a href="{{anime.link}}">
+            <div class="row sidebox-movie py-1">
+              <div class="col sidebox-image">
+                <img src="{{anime.image}}" alt="">
+              </div>
+              <div class="col d-flex sidebox-text text-eclipse align-items-center" style="font-size:12px; color:rgba(255,255,255,.8); max-width:400px;">
+                <div class="">
+                  <i>{{anime.name}}</i>
+                  <br>
+                  <span style="font-size:9px; opacity:0.8;">
+                    {{anime.episode}}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row mb-3 anime-box">
+      <div class="sidebox-text px-2 py-1 mb-0">
+        Season
+      </div>
+      <div class="col-12 mt-0 pt-0" style="background:#333; height:3px;">
+      </div>
+      <div class="col-12 sidebox-anime">
+        <div class="row sidebox-movie py-1">
+          <div class="col-12 p-0 m-0" style="color:#e61d2f;">
+            {% for s in season %}
+              <i>{{s.year}}</i>
+              {% for a in s.links %}
+                <a class="season" href="{{a.0}}">{{a.1}}</a>
+              {% endfor %}
+              <br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
